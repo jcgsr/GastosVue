@@ -1,6 +1,6 @@
 <template>
   <div id="form">
-    <h1 class="animate__animated animate__bounce">{{ titulo }}</h1>
+    <h1>{{ titulo }}</h1>
   </div>
 </template>
 

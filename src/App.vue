@@ -1,7 +1,7 @@
 <template>
   <div id="app">    
     <Navbar />
-    <transition enter-active-class="animate__animated animate__rotateInDownLeft" leave-active-class="animate__animated animate__rotateInUpLeft">
+    <transition mode="out-in" enter-active-class="animate__animated animate__rotateInDownLeft" leave-active-class="animate__animated animate__rotateOutDownLeft">
       <router-view></router-view>
     </transition>
     <Footer />
