@@ -120,9 +120,7 @@ export default {
   data() {
     return {
       titulo: "Forulário de Gastos",
-      name: "form",
-      gastosDados: [],
-      id: null,
+      name: "form",      
       gastos: {
         dataAtual: "",
         casa: "",
@@ -171,6 +169,10 @@ h2 {
   margin-bottom: 1rem;
   max-width: 30%;
   margin: 0 auto;
+}
+
+.form-group button {
+   margin-top: 1rem;
 }
 
 fieldset label,

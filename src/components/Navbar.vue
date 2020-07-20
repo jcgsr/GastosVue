@@ -22,7 +22,7 @@
             <router-link to="/form" class="nav-link">Formulário</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tabela de Gastos</a>
+            <router-link to="/tabela" class="nav-link">Tabela de Gastos</router-link>
           </li>
         </ul>
       </div>

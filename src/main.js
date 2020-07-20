@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Formulario from './components/Formulario'
+import TabelaGastos from './components/TabelaGastos'
 
 import router from './router';
 import axios from './axios'
@@ -13,7 +14,7 @@ import 'animate.css';
 
 Vue.config.productionTip = false
 Vue.component([
-  Formulario
+  Formulario, TabelaGastos
 ])
 
 new Vue({
