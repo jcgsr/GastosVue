@@ -5,21 +5,21 @@
       <input type="date" v-model="gastos.dataAtual" name="dataAtual" id="dataAtual" />
       <fieldset>
         <label class="control-label">Casa</label>
-        <input 
+        <input
           name="casa"
-          class="form-control"         
+          class="form-control"
           id="casa"
           type="number"
           v-model="gastos.casa"
           placeholder="1.126"
         />
       </fieldset>
-     
+
       <fieldset>
         <label class="control-label">Luz</label>
-        <input 
+        <input
           name="luz"
-          class="form-control"         
+          class="form-control"
           id="luz"
           type="number"
           v-model="gastos.luz"
@@ -27,11 +27,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Água</label>
-        <input 
+        <input
           name="agua"
-          class="form-control"         
+          class="form-control"
           id="agua"
           type="number"
           v-model="gastos.agua"
@@ -39,11 +39,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Ourocard</label>
-        <input 
+        <input
           name="ouro"
-          class="form-control"         
+          class="form-control"
           id="ouro"
           type="number"
           v-model="gastos.ouro"
@@ -51,11 +51,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Net/TV</label>
-        <input 
+        <input
           name="net_tv"
-          class="form-control"         
+          class="form-control"
           id="net_tv"
           type="number"
           v-model="gastos.net_tv"
@@ -63,11 +63,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Saúde</label>
-        <input 
+        <input
           name="saude"
-          class="form-control"         
+          class="form-control"
           id="saude"
           type="number"
           v-model="gastos.saude"
@@ -75,11 +75,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Educação</label>
-        <input 
+        <input
           name="educacao"
-          class="form-control"         
+          class="form-control"
           id="educacao"
           type="number"
           v-model="gastos.educacao"
@@ -87,11 +87,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">Carro</label>
-        <input 
+        <input
           name="carro"
-          class="form-control"         
+          class="form-control"
           id="carro"
           type="number"
           v-model="gastos.carro"
@@ -99,11 +99,11 @@
         />
       </fieldset>
 
-       <fieldset>
+      <fieldset>
         <label class="control-label">INSS (Susi)</label>
-        <input 
+        <input
           name="inss"
-          class="form-control"         
+          class="form-control"
           id="inss"
           type="number"
           v-model="gastos.inss"
@@ -124,18 +124,40 @@ export default {
       gastosDados: [],
       id: null,
       gastos: {
-         dataAtual: '',
-         casa: '',
-         luz: '',
-         agua: '',
-         ouro: '',
-         net_tv: '',
-         saude: '', 
-         educacao: '',
-         carro: '',
-         inss: ''
+        dataAtual: "",
+        casa: "",
+        luz: "",
+        agua: "",
+        ouro: "",
+        net_tv: "",
+        saude: "",
+        educacao: "",
+        carro: "",
+        inss: ""
       }
     };
+  },
+  methods: {
+     limpar() {
+        this.gastos.dataAtual = '',
+        this.gastos.casa = '',
+        this.gastos.luz = '',
+        this.gastos.agua = '',
+        this.gastos.ouro = '',
+        this.gastos.net_tv = '',
+        this.gastos.saude = '',
+        this.gastos.educacao = '',
+        this.gastos.carro = '',
+        this.gastos.inss = ''
+     },
+    inserir() {
+      const metodo = this.id ? "patch" : "post";
+      const finalUrl = this.id ? `/${this.id}.json` : ".json";
+      this.$http[metodo](`/gastos${finalUrl}`, this.gastos).then(() =>
+        this.limpar()
+      );
+      alert("Gastos inseridos com sucesso!");
+    }
   }
 };
 </script>
@@ -145,13 +167,14 @@ h2 {
   padding: 2rem;
 }
 
-.form-group input{
-   margin-bottom: 1rem;
-   max-width: 30%;
-   margin: 0 auto;
+.form-group input {
+  margin-bottom: 1rem;
+  max-width: 30%;
+  margin: 0 auto;
 }
 
-fieldset label, button {
-   margin: 1rem;
+fieldset label,
+button {
+  margin: 1rem;
 }
 </style>
