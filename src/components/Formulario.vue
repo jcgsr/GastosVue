@@ -111,6 +111,42 @@
         />
       </fieldset>
       <button type="button" @click.prevent="inserir" class="btn btn-primary">Inserir Gastos</button>
+      <hr />
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Casa</th>
+            <th scope="col">Luz</th>
+            <th scope="col">Água</th>
+            <th scope="col">Ourocard</th>
+            <th scope="col">Net/TV</th>
+            <th scope="col">Saúde</th>
+            <th scope="col">Educação</th>
+            <th scope="col">Carro</th>
+            <th scope="col">Inss</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-primary" v-for="(gasto, id) in gastosDados" :key="id">
+            <td>{{ gasto.dataAtual }}</td>
+            <td>{{ gasto.casa }}</td>
+            <td>{{ gasto.luz }}</td>
+            <td>{{ gasto.agua }}</td>
+            <td>{{ gasto.ouro }}</td>
+            <td>{{ gasto.net_tv }}</td>
+            <td>{{ gasto.saude }}</td>
+            <td>{{ gasto.educacao }}</td>
+            <td>{{ gasto.carro }}</td>
+            <td>{{ gasto.inss }}</td>
+            <button type="button" class="btn btn-danger btn-sm" @click="excluir(id)">Excluir</button>
+            <button type="button" class="btn btn-warning btn-sm ml-1" @click="carregar(id)">Carregar</button>
+
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" @click="exibir">Alterar Gastos</button>
     </form>
   </div>
 </template>
@@ -119,8 +155,10 @@
 export default {
   data() {
     return {
-      titulo: "Forulário de Gastos",
-      name: "form",      
+      titulo: "Formulário de Gastos",
+      name: "form",
+      gastosDados: [],
+      id: null,
       gastos: {
         dataAtual: "",
         casa: "",
@@ -136,18 +174,18 @@ export default {
     };
   },
   methods: {
-     limpar() {
-        this.gastos.dataAtual = '',
-        this.gastos.casa = '',
-        this.gastos.luz = '',
-        this.gastos.agua = '',
-        this.gastos.ouro = '',
-        this.gastos.net_tv = '',
-        this.gastos.saude = '',
-        this.gastos.educacao = '',
-        this.gastos.carro = '',
-        this.gastos.inss = ''
-     },
+    limpar() {
+      (this.gastos.dataAtual = ""),
+        (this.gastos.casa = ""),
+        (this.gastos.luz = ""),
+        (this.gastos.agua = ""),
+        (this.gastos.ouro = ""),
+        (this.gastos.net_tv = ""),
+        (this.gastos.saude = ""),
+        (this.gastos.educacao = ""),
+        (this.gastos.carro = ""),
+        (this.gastos.inss = "");
+    },
     inserir() {
       const metodo = this.id ? "patch" : "post";
       const finalUrl = this.id ? `/${this.id}.json` : ".json";
@@ -155,6 +193,21 @@ export default {
         this.limpar()
       );
       alert("Gastos inseridos com sucesso!");
+    },
+    carregar(id) {
+      this.id = id;
+      this.gastos = { ...this.gastosDados[id] };
+    },
+    exibir() {
+      this.$http.get("gastos.json").then(res => {
+        this.gastosDados = res.data;
+        console.log(this.gastosDados);
+      });
+    },
+    excluir(id) {
+      this.$http
+        .delete(`/gastos/${id}.json`)
+        .then(() => alert("Dados excluídos com sucesso!"));
     }
   }
 };
@@ -172,7 +225,7 @@ h2 {
 }
 
 .form-group button {
-   margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 fieldset label,

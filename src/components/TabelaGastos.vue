@@ -28,7 +28,6 @@
           <td>{{ gasto.educacao }}</td>
           <td>{{ gasto.carro }}</td>
           <td>{{ gasto.inss }}</td>
-          <button type="button" class="btn btn-danger ml-2" @click="excluir(id)">Excluir</button>
         </tr>
       </tbody>
     </table>
@@ -51,12 +50,7 @@ export default {
         this.gastosDados = res.data;
         console.log(this.gastosDados);
       });
-    },
-    excluir(id) {
-      this.$http
-        .delete(`/gastos/${id}.json`)
-        .then(() => alert("Dados excluídos com sucesso!"));
-    }
+    },    
   }
 };
 </script>

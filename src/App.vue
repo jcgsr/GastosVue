@@ -26,10 +26,11 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap');
+
 *, html, body {
   box-sizing: border-box;
-  font-family: 'Krub', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
   text-align: center;
 }
 
