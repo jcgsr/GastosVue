@@ -142,12 +142,12 @@
             <td>{{ gasto.inss }}</td>
             <button type="button" class="btn btn-danger btn-sm" @click="excluir(id)">Excluir</button>
             <button type="button" class="btn btn-warning btn-sm ml-1" @click="carregar(id)">Carregar</button>
-
           </tr>
         </tbody>
       </table>
       <button type="button" class="btn btn-primary" @click="exibir">Alterar Gastos</button>
     </form>
+    <button type="button" class="btn btn-warning" @click="logout()">Logout</button>
   </div>
 </template>
 
@@ -208,6 +208,9 @@ export default {
       this.$http
         .delete(`/gastos/${id}.json`)
         .then(() => alert("Dados excluídos com sucesso!"));
+    },
+    logout() {
+      this.$router.replace({ name: "home" });
     }
   }
 };
