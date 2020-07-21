@@ -1,7 +1,9 @@
 <template>
   <div class="form-group container">
     <h2 class="animate__animated animate__bounceIn">{{ titulo }}</h2>
+    <label>Login</label>
     <input type="text" name="username" v-model="input.username" placeholder="Login" />
+    <label>Senha</label>
     <input type="password" name="password" v-model="input.password" placeholder="Senha" />
     <button type="button" v-on:click="login()" class="btn btn-primary">Login</button>
   </div>
@@ -22,11 +24,11 @@ export default {
     login() {
       if (this.input.username != "" && this.input.password != "") {
         if (
-          this.input.username == this.$parent.contaSinergia.username &&
-          this.input.password == this.$parent.contaSinergia.password
+          this.input.username == this.$parent.contaGastos.username &&
+          this.input.password == this.$parent.contaGastos.password
         ) {
           this.$emit("authenticated", true);
-          this.$router.replace({ name: "sinergia" });
+          this.$router.replace({ name: "form" });
         } else {
           alert("Usuário e/ou senha está incorreta");
         }
