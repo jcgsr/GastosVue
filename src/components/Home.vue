@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      titulo: "Login para Inserir Gastos Mensais no Formulário",
+      titulo: "Vue Gastos",
       input: {
         username: "",
         password: ""

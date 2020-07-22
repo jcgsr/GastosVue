@@ -50,7 +50,8 @@ export default {
         this.gastosDados = res.data;
         console.log(this.gastosDados);
       });
-    },    
+    },
+        
   }
 };
 </script>
