@@ -11,8 +11,6 @@ import 'popper.js';
 import 'bootstrap';
 import 'bootswatch/dist/slate/bootstrap.min.css';
 import 'animate.css';
-import 'datatables.net-dt/css/jquery.dataTables.min.css'
-
 
 Vue.config.productionTip = false
 Vue.component([

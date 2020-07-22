@@ -1,7 +1,7 @@
 <template>
   <div id="tabela">
     <h2>{{ titulo }}</h2>
-    <table class="table table-hover">
+    <table class="table table-hover" id="table">
       <thead>
         <tr>
           <th scope="col">Data</th>
@@ -41,7 +41,7 @@ export default {
     return {
       titulo: "Tabela de Gastos",
       gastosDados: [],
-      id: null
+      id: null      
     };
   },
   methods: {
@@ -50,8 +50,7 @@ export default {
         this.gastosDados = res.data;
         console.log(this.gastosDados);
       });
-    },
-        
+    }          
   }
 };
 </script>
